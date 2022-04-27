@@ -22,7 +22,7 @@ def choose_q(dificultad):
     
     # escoger enunciado y alternativas mezcladas
     pregunta = preguntas['pregunta_' + str(n_elegido)]
-    alternativas = preguntas['pregunta_' + str(n_elegido)]['alternativas']
+    alternativas = shuffle_alt(preguntas['pregunta_' + str(n_elegido)])
     
     return pregunta['enunciado'], alternativas
 

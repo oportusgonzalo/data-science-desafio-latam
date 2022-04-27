@@ -1,6 +1,6 @@
 
 def validate(opciones, eleccion):
-    """Permite determinar si un valor se encunetra incluido en un conjunto de opciones.
+    """Permite determinar si un valor se encuentra incluido en un conjunto de opciones.
 
     Args:
         opciones (lista): conjunto de opciones
