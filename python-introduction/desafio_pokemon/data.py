@@ -15,10 +15,13 @@ def template_fill(base_pokemon, base_species, base_types):
         texto_stats += table_template.substitute(stat_name=d.stats_name[ele], stat_value=lista_stats[ele])
 
     # template types
-    lista_tipo = [elemento for elemento in base_types['type_es']]
     texto_tipo = ''
-    for ele in range(0, len(lista_tipo)):
-        texto_tipo += tipo_template.substitute(tipo=lista_tipo[ele]) + ''
+    if len(base_types['type_es']) > 2:
+        texto_tipo += tipo_template.substitute(tipo=base_types['type_es']) + ''
+    else:
+        lista_tipo = [elemento for elemento in base_types['type_es']]
+        for ele in range(0, len(lista_tipo)):
+            texto_tipo += tipo_template.substitute(tipo=lista_tipo[ele]) + ''
 
     # template types_especial
     lista_especial = []
