@@ -7,7 +7,8 @@ def get_base_pokemon(name):
         'id': data['id'],
         'name': data['name'],
         'weight': data['weight'],
-        'stats': [elemento['stat']['name'] for elemento in data['stats']],
+        'stats_name': [elemento['stat']['name'] for elemento in data['stats']],
+        'stats': [elemento['base_stat'] for elemento in data['stats']],
         'types': [elemento['type']['name'] for elemento in data['types']],
         'image': data['sprites']['other']['official-artwork']['front_default']}
     return data_dict
