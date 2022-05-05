@@ -1,4 +1,5 @@
 
+import sys
 import webbrowser
 import os
 import time
@@ -14,7 +15,10 @@ def show_pics(html, nombre):
         f.write(html)
     print('Las fotos se mostrarán en tu Navegador...')
     time.sleep(2)
-    webbrowser.open(f'{nombre}.html')
+    if sys.platform == "darwin":
+        webbrowser.get('chrome').open(f'file://{sys.path[0]}/{nombre}.html')
+    else:
+        webbrowser.open(f'{nombre}.html')
     time.sleep(5)
     os.remove(f'{nombre}.html')
     

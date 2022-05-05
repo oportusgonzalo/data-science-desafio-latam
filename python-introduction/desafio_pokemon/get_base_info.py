@@ -1,11 +1,12 @@
 from get_module import get_info
+from clean_names import clean_name
 
 def get_base_pokemon(name):
     url = f'https://pokeapi.co/api/v2/pokemon/{name}'
     data = get_info(url)
     data_dict = {
         'id': data['id'],
-        'name': data['name'],
+        'name': clean_name(data['name']),
         'weight': data['weight'],
         'stats_name': [elemento['stat']['name'] for elemento in data['stats']],
         'stats': [elemento['base_stat'] for elemento in data['stats']],
