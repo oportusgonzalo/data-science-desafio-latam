@@ -11,9 +11,6 @@ from show import show_pics
 # nos hacemos cargo de la limpieza del nombre
 pokemon = input("Ingrese el nombre de un Pokémon. Nota: Si el pokémon tiene espacios reemplace por '-'. No coloque ningún tipo de signo de puntuación adicional: ").lower()
 
-if pokemon == "type-null":
-    pokemon = "codigo-cero"
-
 # verificamos la existencia de puntuación o espacios en el nombre ingresado
 while '.' in pokemon or ' ' in pokemon:
     pokemon = input("El nombre ingresado no es válido. Ingrese nuevamente el nombre de un Pokémon: ")
@@ -21,7 +18,7 @@ while '.' in pokemon or ' ' in pokemon:
 # validar nombre(existencia)
 pokemon = validate(pokemon)
 
-#for key, url in d.key_url_dict.items()[0]:
+#for key, url in d.key_url_dict.items()[0]: ---> EXTENSION TO RUN ALL??????
 #    pass
 
 # obtenemos datos desde endpoints: pokemon, species, types
