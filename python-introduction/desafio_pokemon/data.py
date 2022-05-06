@@ -6,6 +6,12 @@ validacion_pokemon = "El Pokémon ingresado no existe. Ingrese un nombre de Pok�
 
 stats_name = ['HP', 'Ataque', 'Defensa', 'Ataque Especial', 'Defensa Especial', 'Velocidad']
 
+special_dict = {
+    'is_baby': 'Bebe', 
+    'is_legendary': 'Legendario', 
+    'is_mythical': 'Místico'
+    }
+
 def template_fill(base_pokemon, base_species, base_types):
 
     # template stats
@@ -27,7 +33,7 @@ def template_fill(base_pokemon, base_species, base_types):
     lista_especial = []
     for key in ['is_baby', 'is_legendary', 'is_mythical']:
         if base_species[key] != False:
-            lista_especial.append(key)
+            lista_especial.append(key.replace(key, special_dict[key]))
     texto_especial = ''
     for ele in range(0, len(lista_especial)):
         texto_especial += tipo_especial_template.substitute(tipo_especial=lista_especial[ele]) + ''
