@@ -5,6 +5,7 @@ def get_species(name):
     url = f'https://pokeapi.co/api/v2/pokemon-species/{name}'
     data = get_info(url)
     data_species = {
+        'etapa_previa': [data['evolves_from_species']['name'] if data['evolves_from_species'] else False],
         'is_baby': data['is_baby'], 
         'is_legendary': data['is_legendary'], 
         'is_mythical': data['is_mythical'],
