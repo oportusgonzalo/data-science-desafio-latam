@@ -1,5 +1,6 @@
 from string import Template
 
+etapa_previa_template = Template('<h4>Etapa Previa: $etapa_previa</h4>')
 table_template = Template('<td><h5>$stat_name: $stat_value</h5></td>')
 tipo_template = Template('<span class="label normal">$tipo</span>')
 tipo_especial_template = Template('<span class="label normal">$tipo_especial</span>')
@@ -58,7 +59,16 @@ build_html = Template('''
 </html>
 ''')
 
-single_card = '''<div class="column2">
+build_html_etapa_previa = Template('''
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="mystyle.css">
+    </head>
+    <body>
+
+    <div class="column2">
     <div class="card">
     <h1>#$id $name</h1>
         <img src="$url" width="150" height="150">
@@ -71,17 +81,17 @@ single_card = '''<div class="column2">
             </tr>
         </table>
         <h3><b>Tipo</b></h3> 
-            $tipos
+            $tipo
             $tipo_especial
             
-        <p>$description</p>
+        <p>$descripcion</p>
         
     <h3>Super efectivo contra:</h3>
-        $super_ef
+        $super_efectivo
     <h3>Débil contra:</h3>
         $debil
     <h3>Resistente contra:</h3>
-        $resistente
+        $resistente_contra
     <h3>Poco Eficaz contra</h3>
         $poco_eficaz
     <h3>Inmune contra:</h3>
@@ -92,4 +102,6 @@ single_card = '''<div class="column2">
     </div>
     </div>
 
-'''
+    </body>
+</html>
+''')
