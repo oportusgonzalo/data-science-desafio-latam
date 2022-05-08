@@ -1,5 +1,6 @@
 from string import Template
 
+peso_template = Template('<h4>Peso: $peso</h4>')
 etapa_previa_template = Template('<h4>Etapa Previa: $etapa_previa</h4>')
 table_template = Template('<td><h5>$stat_name: $stat_value</h5></td>')
 tipo_template = Template('<span class="label $color">$tipo</span>')
@@ -26,7 +27,7 @@ build_html = Template('''
     <h1>#$id $name</h1>
         <img src="$url" width="150" height="150">
     <div class="container">
-        
+        $peso
         <h2>Estadísticas</h2>
         <table>
             <tr>
@@ -73,6 +74,7 @@ build_html_etapa_previa = Template('''
     <h1>#$id $name</h1>
         <img src="$url" width="150" height="150">
     <div class="container">
+        $peso
         $etapa_previa
         <h2>Estadísticas</h2>
         <table>

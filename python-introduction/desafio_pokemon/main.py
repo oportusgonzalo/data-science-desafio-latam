@@ -3,7 +3,7 @@ import data as d
 from get_base_info import get_base_pokemon
 from get_species_info import get_species
 from get_types import get_types_info
-from build_pokemon_html import build_html, build_html_etapa_previa, etapa_previa_template
+from build_pokemon_html import build_html, build_html_etapa_previa, etapa_previa_template, peso_template
 from show import show_pics
 
 
@@ -53,14 +53,15 @@ dict_with_templates = d.template_fill(base_pokemon, base_species, base_types_en,
 # reemplazo en html de acuerdo a existencia de variable etapa previa
 if base_species['etapa_previa'][0] == False:
     html_ = build_html.substitute(id=base_pokemon['id'], name=base_pokemon['name'].title(), url=base_pokemon['image'],
-                table=dict_with_templates['texto_stats'], tipo=dict_with_templates['texto_tipo'], 
+                peso=peso_template.substitute(peso=base_pokemon['weight']), table=dict_with_templates['texto_stats'], tipo=dict_with_templates['texto_tipo'], 
                 tipo_especial=dict_with_templates['texto_especial'], descripcion=base_species['flavor_text_entries'],
                 super_efectivo=dict_with_templates['texto_super_efectivo'], debil=dict_with_templates['texto_debil'], 
                 resistente_contra=dict_with_templates['texto_resistente_contra'], poco_eficaz=dict_with_templates['texto_poco_eficaz'], 
                 inmune=dict_with_templates['texto_inmune'], ineficaz=dict_with_templates['texto_ineficaz'])
 else:
     html_ = build_html_etapa_previa.substitute(id=base_pokemon['id'], name=base_pokemon['name'].title(), url=base_pokemon['image'],
-                etapa_previa=etapa_previa_template.substitute(etapa_previa=species_etapa_previa.title()), table=dict_with_templates['texto_stats'], tipo=dict_with_templates['texto_tipo'], 
+                etapa_previa=etapa_previa_template.substitute(etapa_previa=species_etapa_previa.title()), 
+                peso=peso_template.substitute(peso=base_pokemon['weight']), table=dict_with_templates['texto_stats'], tipo=dict_with_templates['texto_tipo'], 
                 tipo_especial=dict_with_templates['texto_especial'], descripcion=base_species['flavor_text_entries'],
                 super_efectivo=dict_with_templates['texto_super_efectivo'], debil=dict_with_templates['texto_debil'], 
                 resistente_contra=dict_with_templates['texto_resistente_contra'], poco_eficaz=dict_with_templates['texto_poco_eficaz'], 
