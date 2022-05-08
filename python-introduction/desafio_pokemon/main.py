@@ -15,21 +15,19 @@ pokemon = input("Ingrese el nombre de un Pokémon. Nota: Si el pokémon tiene es
 while '.' in pokemon or ' ' in pokemon:
     pokemon = input("El nombre ingresado no es válido. Ingrese nuevamente el nombre de un Pokémon: ")
 
-# validar nombre(existencia)
+# validar nombre (existencia)
 pokemon = validate(pokemon)
 
-#for key, url in d.key_url_dict.items()[0]: ---> EXTENSION TO RUN ALL??????
-#    pass
-
-# obtenemos datos desde endpoints: pokemon, species, types
+# obtenemos datos desde endpoints: pokemon y species
 base_pokemon = get_base_pokemon(name=pokemon)
 base_species = get_species(name=pokemon)
 
 species_etapa_previa = base_species['etapa_previa'][0]
 
-# como un pokemon puede tener mas de un tipo, y la consulta sobre las fortalezas y debilidades se ejecuta de forma
-# individual para cada tipo, entonces sumamos los valores de las llaves identicas (listas), identificamos unicos,
-# y guardamos la informacion en un diccionario global sobre fortalezas y debilidades (considerando ambos tipos)
+# obtenemos datos desde endpoint: types
+'''como un pokemon puede tener mas de un tipo, y la consulta sobre las fortalezas y debilidades se ejecuta de forma
+individual para cada tipo, entonces sumamos los valores de las llaves identicas (listas), identificamos unicos,
+y guardamos la informacion en un diccionario global sobre fortalezas y debilidades (considerando ambos tipos)'''
 base_types_en = {}
 if len(base_pokemon['types']) > 1:
     types_1_en, types_2_en = get_types_info(base_pokemon['types'][0]), get_types_info(base_pokemon['types'][1])
