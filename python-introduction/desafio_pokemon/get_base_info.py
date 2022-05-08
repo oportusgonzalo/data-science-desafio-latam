@@ -1,6 +1,7 @@
 from get_module import get_info
 from clean_names import clean_name
 
+# funcion que extrae atributos base
 def get_base_pokemon(name):
     url = f'https://pokeapi.co/api/v2/pokemon/{name}'
     data = get_info(url)

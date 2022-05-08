@@ -1,6 +1,7 @@
 from get_module import get_info
 import random
 
+# funcion que permite extraer atributos relacionados a la especie
 def get_species(name):
     url = f'https://pokeapi.co/api/v2/pokemon-species/{name}'
     data = get_info(url)

@@ -3,18 +3,25 @@ from build_pokemon_html import table_template, tipo_template, tipo_especial_temp
 from translate import translate
 
 
+# mensaje de error al ingresar el nombre de un pokemon
 validacion_pokemon = "El Pokémon ingresado no existe. Ingrese un nombre de Pokémon válido: "
 
+# lista con nombre de stats en español
 stats_name = ['HP', 'Ataque', 'Defensa', 'Ataque Especial', 'Defensa Especial', 'Velocidad']
 
+# diccionario que permite hacer un reemplazo de tipos especiales a palabras comprensibles
 special_dict = {
     'is_baby': 'Bebe', 
     'is_legendary': 'Legendario', 
     'is_mythical': 'Místico'
     }
 
+# url base para hacer traducciones al español de tipos
 base_url = 'https://pokeapi.co/api/v2/type/'
 
+# funcion que completa los templates de variables con los valores de las mismas
+# recibe diccionarios con todos los atributos a mostrar en el pokedex
+# los tipos, fortalezas, y debilidades; son traducidos al español haciendo uso de la funcion translate
 def template_fill(base_pokemon, base_species, base_types_en, base_types):
 
     # template stats
@@ -24,14 +31,14 @@ def template_fill(base_pokemon, base_species, base_types_en, base_types):
         texto_stats += table_template.substitute(stat_name=d.stats_name[ele], stat_value=lista_stats[ele])
 
     # template types
+    '''Cuando existe mas de un tipo, dado que no es una lista, entonces el numero de caracteres sera mayor a 2'''
     texto_tipo = ''
-    if len(base_types['type_es']) > 2:
-        texto_tipo += tipo_template.substitute(color=base_types_en['type_en'], tipo=base_types['type_es']) + ''
+    if len(base_types_en['type_en']) > 2:
+        texto_tipo += tipo_template.substitute(color=base_types_en['type_en'], tipo=translate(url=base_url+base_types_en['type_en'])) + ''
     else:
         lista_tipo_en = [elemento for elemento in base_types_en['type_en']]
-        lista_tipo = [elemento for elemento in base_types['type_es']]
-        for ele in range(0, len(lista_tipo)):
-            texto_tipo += tipo_template.substitute(color=lista_tipo_en[ele], tipo=lista_tipo[ele]) + ''
+        for ele in range(0, len(lista_tipo_en)):
+            texto_tipo += tipo_template.substitute(color=lista_tipo_en[ele], tipo=translate(url=base_url+lista_tipo_en[ele])) + ''
 
     # template types_especial
     lista_especial = []

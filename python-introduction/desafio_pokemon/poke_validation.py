@@ -4,6 +4,7 @@ with open("pokemon_list.txt", "r") as f:
 pokemon_lista = [elemento.strip('\n') for elemento in pokemon_lista]
 import data as d
 
+# funcion que valida la existencia del pokemon en el conjunto de nombres posibles
 def validate(name, p_l = pokemon_lista, mensaje = d.validacion_pokemon):
     if name =='codigo-cero':
         name = 'type-null'

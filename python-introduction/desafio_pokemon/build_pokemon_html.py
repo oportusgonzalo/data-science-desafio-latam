@@ -1,5 +1,6 @@
 from string import Template
 
+# construccion de templates de variables para ser utilizados en el archivo html del pokedex
 peso_template = Template('<h4>Peso: $peso</h4>')
 etapa_previa_template = Template('<h4>Etapa Previa: $etapa_previa</h4>')
 table_template = Template('<td><h5>$stat_name: $stat_value</h5></td>')
@@ -12,7 +13,7 @@ poco_eficaz_template = Template('<span class="label $color">$poco_eficaz</span>'
 inmune_template = Template('<span class="label $color">$inmune</span>')
 ineficaz_template = Template('<span class="label $color">$ineficaz</span>')
 
-
+# html del pokedex, no incluye etapa previa
 build_html = Template('''
 <!DOCTYPE html>
 <html>
@@ -60,6 +61,7 @@ build_html = Template('''
 </html>
 ''')
 
+# html del pokedex, incluye etapa previa
 build_html_etapa_previa = Template('''
 <!DOCTYPE html>
 <html>
