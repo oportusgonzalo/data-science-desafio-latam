@@ -30,18 +30,24 @@ species_etapa_previa = base_species['etapa_previa'][0]
 # como un pokemon puede tener mas de un tipo, y la consulta sobre las fortalezas y debilidades se ejecuta de forma
 # individual para cada tipo, entonces sumamos los valores de las llaves identicas (listas), identificamos unicos,
 # y guardamos la informacion en un diccionario global sobre fortalezas y debilidades (considerando ambos tipos)
+base_types_en = {}
 base_types = {}
 if len(base_pokemon['types']) > 1:
-    types_1, types_2 = get_types_info(base_pokemon['types'][0]), get_types_info(base_pokemon['types'][1])
+    types_1_en, types_1 = get_types_info(base_pokemon['types'][0])
+    types_2_en, types_2 = get_types_info(base_pokemon['types'][1])
+    for key in types_1_en.keys():
+        key_val = list(set(types_1_en[key] + types_2_en[key]))
+        base_types_en.update({key: key_val})
+    base_types_en.update({'type_en': [types_1_en['type_en'], types_2_en['type_en']]})
     for key in types_1.keys():
         key_val = list(set(types_1[key] + types_2[key]))
         base_types.update({key: key_val})
     base_types.update({'type_es': [types_1['type_es'], types_2['type_es']]})
 else:
-    base_types = get_types_info(base_pokemon['types'][0])
+    base_types_en, base_types = get_types_info(base_pokemon['types'][0])
 
 # funcion que permite rellenar todos los templates para el archivo html
-dict_with_templates = d.template_fill(base_pokemon, base_species, base_types)
+dict_with_templates = d.template_fill(base_pokemon, base_species, base_types_en, base_types)
 
 # sustitucion de variables en template html
 # reemplazo en html de acuerdo a existencia de variable etapa previa

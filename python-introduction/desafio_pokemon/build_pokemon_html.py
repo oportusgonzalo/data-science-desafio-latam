@@ -2,14 +2,14 @@ from string import Template
 
 etapa_previa_template = Template('<h4>Etapa Previa: $etapa_previa</h4>')
 table_template = Template('<td><h5>$stat_name: $stat_value</h5></td>')
-tipo_template = Template('<span class="label normal">$tipo</span>')
+tipo_template = Template('<span class="label $color">$tipo</span>')
 tipo_especial_template = Template('<span class="label normal">$tipo_especial</span>')
-super_efectivo_template = Template('<span class="label">$efectivo</span>')
-debil_template = Template('<span class="label">$debil</span>')
-resistente_contra_template = Template('<span class="label">$resistente</span>')
-poco_eficaz_template = Template('<span class="label">$poco_eficaz</span>')
-inmune_template = Template('<span class="label">$inmune</span>')
-ineficaz_template = Template('<span class="label">$ineficaz</span>')
+super_efectivo_template = Template('<span class="label $color">$efectivo</span>')
+debil_template = Template('<span class="label $color">$debil</span>')
+resistente_contra_template = Template('<span class="label $color">$resistente</span>')
+poco_eficaz_template = Template('<span class="label $color">$poco_eficaz</span>')
+inmune_template = Template('<span class="label $color">$inmune</span>')
+ineficaz_template = Template('<span class="label $color">$ineficaz</span>')
 
 
 build_html = Template('''

@@ -14,7 +14,8 @@ def get_types_info(type):
         'half_damage_from': [data['damage_relations']['half_damage_from'][element]['name'] for element in range(0, len(data['damage_relations']['half_damage_from']))],
         'half_damage_to': [data['damage_relations']['half_damage_to'][element]['name'] for element in range(0, len(data['damage_relations']['half_damage_to']))],
         'no_damage_from': [data['damage_relations']['no_damage_from'][element]['name'] for element in range(0, len(data['damage_relations']['no_damage_from']))],
-        'no_damage_to': [data['damage_relations']['no_damage_to'][element]['name'] for element in range(0, len(data['damage_relations']['no_damage_to']))]}
+        'no_damage_to': [data['damage_relations']['no_damage_to'][element]['name'] for element in range(0, len(data['damage_relations']['no_damage_to']))],
+        'type_en': type}
     
     # transformamos a español cada fortaleza y debilidad haciendo uso de la funcion translate
     base_url = 'https://pokeapi.co/api/v2/type/'
@@ -28,7 +29,7 @@ def get_types_info(type):
         'type_es': translate(name=type, url=base_url + type)
     }    
 
-    return data_types
+    return data_types_en, data_types
 
 if __name__ == "__main__":
     name = 'fire'
