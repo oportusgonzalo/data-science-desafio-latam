@@ -20,13 +20,13 @@ def get_types_info(type):
     # transformamos a español cada fortaleza y debilidad haciendo uso de la funcion translate
     base_url = 'https://pokeapi.co/api/v2/type/'
     data_types = {
-        'double_damage_from': [translate(name=value, url=base_url + value) for value in data_types_en['double_damage_from']],
-        'double_damage_to': [translate(name=value, url=base_url + value) for value in data_types_en['double_damage_to']],
-        'half_damage_from': [translate(name=value, url=base_url + value) for value in data_types_en['half_damage_from']],
-        'half_damage_to': [translate(name=value, url=base_url + value) for value in data_types_en['half_damage_to']],
-        'no_damage_from': [translate(name=value, url=base_url + value) for value in data_types_en['no_damage_from']],
-        'no_damage_to': [translate(name=value, url=base_url + value) for value in data_types_en['no_damage_to']],
-        'type_es': translate(name=type, url=base_url + type)
+        'double_damage_from': [translate(url=base_url + value) for value in data_types_en['double_damage_from']],
+        'double_damage_to': [translate(url=base_url + value) for value in data_types_en['double_damage_to']],
+        'half_damage_from': [translate(url=base_url + value) for value in data_types_en['half_damage_from']],
+        'half_damage_to': [translate(url=base_url + value) for value in data_types_en['half_damage_to']],
+        'no_damage_from': [translate(url=base_url + value) for value in data_types_en['no_damage_from']],
+        'no_damage_to': [translate(url=base_url + value) for value in data_types_en['no_damage_to']],
+        'type_es': translate(url=base_url + type)
     }    
 
     return data_types_en, data_types
