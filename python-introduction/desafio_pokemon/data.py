@@ -22,7 +22,7 @@ base_url = 'https://pokeapi.co/api/v2/type/'
 # funcion que completa los templates de variables con los valores de las mismas
 # recibe diccionarios con todos los atributos a mostrar en el pokedex
 # los tipos, fortalezas, y debilidades; son traducidos al español haciendo uso de la funcion translate
-def template_fill(base_pokemon, base_species, base_types_en, base_types):
+def template_fill(base_pokemon, base_species, base_types_en):
 
     # template stats
     lista_stats = [elemento for elemento in base_pokemon['stats']]
