@@ -36,5 +36,8 @@ if __name__ == "__main__":
     print()
     print('El escenario menos probable es que ambos perros sean iguales a un perro.')
     print('El escenario mas probable es que yound_pet o old_pet sean iguales a un perro.')
+
+    '''Esto ocurre porque recibir dos resultados iguales toma la intersección de dos eventos. En cambio la posibilidad
+    de un evento A o un evento B toma la unión de ambos espacios.'''
     
     
