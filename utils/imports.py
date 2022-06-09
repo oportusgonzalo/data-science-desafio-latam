@@ -9,6 +9,11 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 import warnings
 
+# machine learning libraries
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.model_selection import train_test_split
+
 from calidad_datos import calidad_datos
 from graficos import cross_plot
 
