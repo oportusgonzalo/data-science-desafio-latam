@@ -17,6 +17,11 @@ from sklearn.model_selection import train_test_split
 from calidad_datos import calidad_datos
 from graficos import cross_plot
 
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.preprocessing import LabelEncoder, StandardScaler, LabelBinarizer
+from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
+
 plt.style.use('seaborn') # gráficos estilo seaborn
 plt.rcParams["figure.figsize"] = (8, 6) # Tamaño gráficos
 plt.rcParams["figure.dpi"] = 70 # resolución gráficos
