@@ -66,7 +66,7 @@ def grid_plot_batch(df, cols, plot_type):
 
     # para cada columna
     for index, (colname, serie) in enumerate(df.iteritems()):
-        plt.subplot(rows, cols, index + 1)
+        plt.subplot(int(rows), cols, index + 1)
         plot_type(serie)
         plt.tight_layout()
 
