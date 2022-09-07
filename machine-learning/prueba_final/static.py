@@ -5,6 +5,7 @@ import argparse
 import matplotlib.pyplot as plt
 import time
 import seaborn as sns
+import string
 import os
 
 import re
@@ -43,12 +44,14 @@ def nlp_cleaning(df):
     df = clean_text(df, 'content', 'content_norm')
     # remove stop words
     df = replace_stop_words(df, 'content_norm', stop_words)
+    # removing numbers
+    df['content_norm_stop'] = df['content_norm_stop'].apply(lambda x: re.sub('[0-9]+', '', x))
     # tokenize text
     df['content_token'] = df['content_norm_stop'].apply(lambda x: word_tokenize(x))
     # lemmatization
     df['content_token_lemma'] = df['content_token'].apply(lambda x: word_lemmatizer(x))
-    # joining lemmas
-    df['content_clean'] = df['content_token_lemma'].apply(lambda list_: ' '.join([word for word in list_]))
+    # joining lemmas and removing punctuation
+    df['content_clean'] = df['content_token_lemma'].apply(lambda list_: ' '.join([word for word in list_ if word not in string.punctuation]))
     return df
 
 #calidad de datos
