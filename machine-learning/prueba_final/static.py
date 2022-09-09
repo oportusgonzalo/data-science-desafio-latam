@@ -8,6 +8,8 @@ import seaborn as sns
 import string
 import os
 
+from sklearn.metrics import classification_report, accuracy_score, roc_curve, roc_auc_score, confusion_matrix
+
 import re
 import nltk.corpus
 
@@ -71,3 +73,20 @@ def calidad_datos(data):
 
 
     return pd.concat([tipos, na, na_prop, ceros, ceros_prop, summary], axis=1).sort_values('tipo')
+
+def confussion_matrix_map(y_test, y_hat, target_label):
+    cnf = confusion_matrix(y_test, y_hat) / len(y_test)
+    target_label = ['negativa', 'positiva']
+    sns.heatmap(cnf, xticklabels=target_label, yticklabels=target_label, annot=True, fmt=".1%", cbar=False, cmap='Blues')
+
+def metrics_(model_, get_params, best_model, X_test_std, y_test, target_label):
+    print(f'Modelo predictivo: {model_}')
+    print(f'Best params: {get_params.best_params_}')
+    print(f'Best score: {get_params.best_score_}')
+    y_hat = best_model.predict(X_test_std)
+    print(f'Accuracy Score: {accuracy_score(y_test, y_hat)}')
+    print(f'ROC Score: {round(roc_auc_score(y_test, y_hat), 3)}')
+    print('Confussion Matrix: ')
+    print(confussion_matrix_map(y_test, y_hat, target_label))
+    print('classification_report: ')
+    print(classification_report(y_test, y_hat))
