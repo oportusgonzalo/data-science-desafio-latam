@@ -9,3 +9,4 @@ select titulo_cancion, album, nacionalidad from cancion left join album on album
 -- y artista donde las canciones deberan estar ordenadas
 -- por año del lanzamiento del album, album y artista
 -- correspondiente
+select numero_del_track, titulo_cancion, album, anio, artista from cancion left join album on album.titulo_album = cancion.album left join artista on artista.nombre_artista = cancion.artista order by anio, album, artista;
