@@ -1,0 +1,80 @@
+Primero que todo, identificamos las entidades que estan presentes en la base de datos, junto con lo atributos que las definen:
+
+1) producto: codigo_producto, producto
+2) local: local, ubicacion
+3) vendedor: rut_vendedor, vendedor
+4) cliente: rut_cliente, nombre_cliente
+
+Ahora bien, necesitamos conocer como interactúan dichas entidades para dar paso a por ejemplo, una venta. Dado ello, debemos crear
+tablas adicionales que nos permitan definir relaciones.
+
+5) compra: numero_boleta, rut_vendedor, rut_cliente, local, codigo_producto, precio, cantidad_vendida
+6) stock: local, numero_bodega, codigo_producto, existencia, stock
+
+Ahora que tenemos definidas las tablas que debemos crear, junto con su estructura, procedemos a crear dichas tablas en SQL:
+
+1) producto:
+
+create table producto (
+    codigo_producto int,
+    producto varchar(50)
+    primary key (codigo_producto)
+);
+
+2) local:
+
+create table local (
+    local varchar(50),
+    ubicacion varchar(50)
+    primary key (local)
+);
+
+3) vendedor:
+
+create table vendedor (
+    rut_vendedor int,
+    vendedor varchar(50)
+    primary key (rut_vendedor)
+);
+
+4) cliente:
+
+create table cliente (
+    rut_cliente int,
+    nombre_cliente varchar(50)
+    primary key (rut_cliente)
+);
+
+Una vez definidas las tablas entidad, podemos generar las tablas que definen las relaciones entre las entidades:
+
+5) compra:
+
+create table compra (
+    numero_boleta int,
+    rut_vendedor int,
+    rut_cliente int,
+    local varchar(50),
+    codigo_producto int,
+    precio int,
+    cantidad_vendida int
+    primary key (numero_boleta),
+    foreign key (rut_vendedor) references vendedor(rut_vendedor),
+    foreign key (rut_cliente) references cliente(rut_cliente),
+    foreign key (local) references local(local),
+    foreign key (codigo_producto) references producto(codigo_producto)
+);
+
+6) stock:
+
+create table stock (
+    local varchar(50),
+    numero_bodega int,
+    codigo_producto int,
+    existencia varchar(50),
+    stock int
+    primary key (local, numero_bodega, codigo_producto),
+    foreign key (local) references local(local),
+    foreign key (codigo_producto) references producto(codigo_producto)
+);
+
+Ahora que tenemos definidas las tablas, se seguiría insertando los datos desde el archivo.
